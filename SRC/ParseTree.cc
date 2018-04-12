@@ -38,6 +38,10 @@ void Stmt::action(ParseTree* caller) {
     myReport(_name + " was called by " + callerName + ".");
   } else myReport(_name + " was called.");
 
+  ///////////
+  // thing //
+  ///////////
+  
   if (_name.compare("thing")==0) {
     std::string thingType = specLookup("type",std::string("atom"));
     std::string thingName = specLookup("name",std::string("atom"));
@@ -48,5 +52,49 @@ void Stmt::action(ParseTree* caller) {
     
     bodyAction();    
   }
+
+  /////////////////
+  // thing->atom //
+  /////////////////
+
+  else if (_name.compare("atom")==0 &&
+	   callerName.compare("thing")==0) {
+    Atom* atom = static_cast<Atom*>(theWorld->getCurrentThing());
+
+    atom->set((ArgList*)_spec);
+  }
+
+  ////////////////////
+  // thing->crystal //
+  ////////////////////
+
+  else if (_name.compare("crystal")==0 &&
+	   callerName.compare("thing")==0) {
+    Crystal* crystal = static_cast<Crystal*>(theWorld->getCurrentThing());
+  }
+
+  /////////
+  // law //
+  /////////
+
+  else if (_name.compare("law")==0) {
+  }
+
+  ///////////
+  // solve //
+  ///////////
+
+  else if (_name.compare("solve")==0) {
+  }  
+
+  ///////////
+  // ERROR //
+  ///////////  
+
+  else {
+    std::string message = 
+      _name + std::string(" is not a valid Stmt name.");
+    myReportError(message);
+  }   
 }
 

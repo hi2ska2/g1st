@@ -16,3 +16,12 @@ Atom::Atom(const std::string& name)
   : Thing(name,ThingType::ATOM)
 {
 }
+
+void Atom::set(ArgList* argList)
+{
+  if (argList->doesExist("type")) {
+    std::string type = argList->lookup("type",std::string("si"));
+    if (type.compare("si")==0) _type = AtomType::SILICON;
+    else myReportError("Atom::set(argList)");
+  }
+}

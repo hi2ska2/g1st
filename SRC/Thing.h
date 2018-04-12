@@ -35,6 +35,7 @@ class Thing {
 };
 
 #include "Atom.h"
+#include "Crystal.h"
 //#include "Lumped.h"
 
 #endif

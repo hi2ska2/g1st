@@ -6,24 +6,13 @@
 // Please see LICENSE for license information. //
 /////////////////////////////////////////////////
 
-// Atom.h
+// Crystal.cc
 
-#ifndef AtomH
-#define AtomH
+#include "Crystal.h"
 
-#include "Thing.h"
+#include "utilities.h"
 
-namespace AtomType {
-  enum Type { SILICON };
-};
-
-class Atom : public Thing {
- public:
-  Atom(const std::string& name);
-  virtual void set(ArgList* argList);
-
- private:
-  AtomType::Type _type;
-};
-
-#endif
+Crystal::Crystal(const std::string& name)
+  : Thing(name,ThingType::CRYSTAL)
+{
+}
