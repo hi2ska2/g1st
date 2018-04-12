@@ -10,10 +10,10 @@
 
 #include "ParseTree.h"
 
-//#include "World.h"
+#include "World.h"
 
 ParseTree* parse_tree;
-//World* theWorld = new World();
+World* theWorld = new World();
 
 void Program::action(ParseTree* caller) {
   myReport("Program starts.");
