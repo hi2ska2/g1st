@@ -17,11 +17,11 @@ Thing::Thing(const std::string& name,
   : _name(name),
     _type(type)
 {
-  std::cout << "\n";
-  std::cout << "A Thing object is created.\n";
-  std::cout << "Its name is " << _name << ".\n";
-  std::cout << "Its ThingType::type is " << _type << ".\n";
-  std::cout << "\n";
+  //std::cout << "\n";
+  //std::cout << "A Thing object is created.\n";
+  //std::cout << "Its name is " << _name << ".\n";
+  //std::cout << "Its ThingType::type is " << _type << ".\n";
+  //std::cout << "\n";
 }
 
 std::string Thing::getName() { return _name; }

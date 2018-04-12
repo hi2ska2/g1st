@@ -37,5 +37,16 @@ void Stmt::action(ParseTree* caller) {
     callerName = static_cast<Stmt*>(caller)->getName();
     myReport(_name + " was called by " + callerName + ".");
   } else myReport(_name + " was called.");
+
+  if (_name.compare("thing")==0) {
+    std::string thingType = specLookup("type",std::string("atom"));
+    std::string thingName = specLookup("name",std::string("atom"));
+    Thing* selected = NULL;
+    if      (thingType=="atom"   ) selected = theWorld->addThing( new Atom(thingName) );
+    else if (thingType=="crystal") ;
+    else myReportError(thingType + " is not a known thing type.");
+    
+    bodyAction();    
+  }
 }
 

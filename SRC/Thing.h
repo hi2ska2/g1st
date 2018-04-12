@@ -34,7 +34,7 @@ class Thing {
   //Id _thingId;
 };
 
-//#include "Circuit.h"
+#include "Atom.h"
 //#include "Lumped.h"
 
 #endif
