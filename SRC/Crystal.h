@@ -13,6 +13,8 @@
 
 #include "Thing.h"
 
+class Atom;
+
 class Crystal : public Thing {
  public:
   Crystal(const std::string& name);
