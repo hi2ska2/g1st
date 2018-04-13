@@ -71,6 +71,22 @@ void Stmt::action(ParseTree* caller) {
   else if (_name.compare("crystal")==0 &&
 	   callerName.compare("thing")==0) {
     Crystal* crystal = static_cast<Crystal*>(theWorld->getCurrentThing());
+
+    crystal->set((ArgList*)_spec);
+
+    bodyAction();
+  }
+  else if (_name.compare("latticevector")==0 &&
+	   callerName.compare("crystal")==0) {
+    Crystal* crystal = static_cast<Crystal*>(theWorld->getCurrentThing());
+
+    crystal->setLatticeVector((ArgList*)_spec);
+  }
+  else if (_name.compare("latticebasis")==0 &&
+	   callerName.compare("crystal")==0) {
+    Crystal* crystal = static_cast<Crystal*>(theWorld->getCurrentThing());
+
+    crystal->setLatticeBasis((ArgList*)_spec);
   }
 
   /////////
