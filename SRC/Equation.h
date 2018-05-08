@@ -47,4 +47,6 @@ class Equation {
   Thing& _thing;
 };
 
+#include "EqAllElectron.h"
+
 #endif

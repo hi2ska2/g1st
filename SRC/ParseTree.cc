@@ -115,7 +115,14 @@ void Stmt::action(ParseTree* caller) {
 
   else if (_name.compare("equation")==0 &&
 	   callerName.compare("law")==0) {
-    
+    std::string eqType = specLookup("type",std::string("equation"));
+    std::string thingName = specLookup("thing",std::string("thing"));
+    Thing& selThing(*(theWorld->getThing(thingName)));
+    Law* cLaw = thePhilosophy->getCurrentLaw(); 
+    Equation* selEq = NULL; 
+    if (eqType.compare("allelectron")==0) {
+      selEq = cLaw->addEquation( new EqAllElectron(selThing) );
+    }    
   }  
 
   ///////////
