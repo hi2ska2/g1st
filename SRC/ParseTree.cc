@@ -11,9 +11,11 @@
 #include "ParseTree.h"
 
 #include "World.h"
+#include "Philosophy.h"
 
 ParseTree* parse_tree;
 World* theWorld = new World();
+Philosophy* thePhilosophy = new Philosophy();
 
 void Program::action(ParseTree* caller) {
   myReport("Program starts.");
@@ -47,7 +49,7 @@ void Stmt::action(ParseTree* caller) {
     std::string thingName = specLookup("name",std::string("atom"));
     Thing* selected = NULL;
     if      (thingType=="atom"   ) selected = theWorld->addThing( new Atom(thingName) );
-    else if (thingType=="crystal") ;
+    else if (thingType=="crystal") { myReportError("thing"); }
     else myReportError(thingType + " is not a known thing type.");
     
     bodyAction();    
@@ -94,7 +96,27 @@ void Stmt::action(ParseTree* caller) {
   /////////
 
   else if (_name.compare("law")==0) {
+    std::string lawName = specLookup("name",std::string("law"    ));
+    int iteration       = specLookup("iteration",12);
+    bool ignore = specDoesExist("ignore"); 
+    Law* cLaw = thePhilosophy->getCurrentLaw(); 
+    Law* selected = NULL;
+    if (cLaw) selected = cLaw->addSubLaw      ( new Law(lawName,iteration,ignore) );
+    else      selected = thePhilosophy->addLaw( new Law(lawName,iteration,ignore) );
+    thePhilosophy->setCurrentLaw(selected);
+    bodyAction();
+    selected->referTo();
+    thePhilosophy->setCurrentLaw(cLaw);    
   }
+
+  ///////////////////
+  // law->equation //
+  ///////////////////
+
+  else if (_name.compare("equation")==0 &&
+	   callerName.compare("law")==0) {
+    
+  }  
 
   ///////////
   // solve //

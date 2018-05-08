@@ -26,6 +26,7 @@ class Thing {
   Thing(const std::string& name,ThingType::Type type);
 
   std::string getName();
+  //virtual bool isInitialized() = 0;
   
  protected:
   std::string _name;
