@@ -12,10 +12,14 @@
 
 #include "World.h"
 #include "Philosophy.h"
+#include "History.h"
+#include "Solver.h"
 
 ParseTree* parse_tree;
 World* theWorld = new World();
 Philosophy* thePhilosophy = new Philosophy();
+History* theHistory = new History();
+Solver* theSolver = NULL;
 
 void Program::action(ParseTree* caller) {
   myReport("Program starts.");
@@ -130,6 +134,18 @@ void Stmt::action(ParseTree* caller) {
   ///////////
 
   else if (_name.compare("solve")==0) {
+    // spec
+    std::string law = specLookup("law",std::string("law"));
+    Law* selLaw = thePhilosophy->getLaw(law);    
+    theSolver = new Solver(selLaw,theWorld,theHistory,(ArgList*)_spec);
+     
+    bodyAction();
+    
+    theSolver->followLaw();
+    
+    theSolver->clear();
+    
+    delete theSolver;
   }  
 
   ///////////
