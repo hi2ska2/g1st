@@ -23,3 +23,10 @@ void myReportError(const std::string& message) {
   std::cout.flush();
   exit(1);
 }
+
+std::string myDoubleToString(double number)
+{
+  std::ostringstream ss;
+  ss << number;
+  return ss.str();
+}

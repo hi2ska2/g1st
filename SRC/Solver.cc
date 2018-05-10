@@ -9,6 +9,7 @@
 // Solver.cc
 
 #include "Solver.h"
+#include "Law.h"
 #include "utilities.h"
 
 Solver::Solver(Law* law,World* world,History* history,ArgList* argList)
@@ -68,7 +69,99 @@ void Solver::applyGoalsToThings(double progress)
 
 void Solver::followLaw() 
 {
-  // Empty implementation
+  // Determine what to do
+  analyzeLaw();
+
+  // Remember the initial status
+
+  // Actually solve 
+  myReport("===  Solution procedure for Law " + _law->getName() + " ===");
+
+  getInitsFromThings();
+
+  double step = _initialStep;
+  double progress = 0.0;
+  int count = 0;
+  
+  // For solveEq  
+  if (_doZero) {
+    myReport("===============");
+    myReport("Progress = " + myDoubleToString(progress));
+    myReport("===============");  
+    applyGoalsToThings(progress);
+    
+    bool valid = true;
+    double totalError = _law->solve(valid,_argList);
+    
+    if (valid && totalError<1.0) {
+      _law->postprocess();
+
+      // After calling the solve routine  
+      plot(_plotPrefix,count);
+      count++;
+      //record(_recordFileName);
+      writeBook();
+    } else {
+      myReportError("Solver::folllowLaw(), dozero is a failure.");
+    }
+
+    // No break for _doZero
+  }
+  
+  while (progress<1.0) {
+    // Before calling the solve routine
+    progress += step;
+    if ( progress > (1.0-1e-9) ) progress = 1.0;    
+    myReport("===============");
+    myReport("Progress = " + myDoubleToString(progress));
+    myReport("===============");  
+    applyGoalsToThings(progress);
+    
+    bool valid = true;
+    double totalError = _law->solve(valid,_argList);
+    //std::cout << "totalError = " << totalError << "\n";
+    if (valid && totalError<1.0) {
+      _law->postprocess();
+
+      // After calling the solve routine 
+      plot(_plotPrefix,count);
+      count++;
+      //record(_recordFileName);
+      writeBook();
+
+      step *= _increment;
+      if (step>_maxStep) step = _maxStep;
+    } else {
+      myReport("Solver::folllowLaw(), unsuccessful Newton iteration.");
+      _law->restore();
+      myReportError("Solver::folllowLaw(), unsuccessful Newton iteration.");
+      progress -= step;
+      step /= _decrement;
+      if (step<_minStep) myReportError("Solver::folllowLaw(), too small step.");
+    }
+
+    // Break
+    /*
+    bool mustBreak = (_breakcriteria.size()>0) ? true : false;
+    for (int ii=0; ii<_breakcriteria.size(); ++ii) {
+      Book* book = _history->getBook(_bookName);
+      if ( !(book->checkCriterion(_breakcriteria[ii])) ) {
+	std::cout << "BREAK: The condition #" << ii << " is NOT satisfied.\n";
+	mustBreak = false; 
+      } else {
+	std::cout << "BREAK: The condition #" << ii << " is satisfied.\n";
+      }
+    }
+   
+    if (mustBreak) {
+      myReport("BREAK: All conditions are satisfied.");
+      break;
+    }
+    */
+  }
+  
+  myReport("===  End of solution procedure ===");
+  myReport(" ");  
 }
 
 void Solver::getInitsFromThings()

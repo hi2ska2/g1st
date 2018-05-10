@@ -18,4 +18,6 @@
 void myReport(const std::string& message);
 void myReportError(const std::string& message);
 
+std::string myDoubleToString (double number);
+
 #endif
