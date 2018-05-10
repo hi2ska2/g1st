@@ -14,14 +14,16 @@
 #include <vector>
 
 #include "ParseTree.h"
+#include "Thing.h"
+#include "Variable.h"
+#include "Sparse.h"
+#include "Balance.h"
 
 // EVAL: Evaluating the given expression
 // NEWTON: Newton-Raphson method
 // EIGEN: Eigenvalue-eigenvector problem
 enum SolveType { EVAL, NEWTON, EIGEN };
 static std::string SolveTypeStrArray[] = {"EVAL", "NEWTON", "EIGEN"};
-
-class Thing;
 
 class Equation {
  public:
@@ -47,6 +49,12 @@ class Equation {
   Thing& _thing;
 };
 
-#include "EqAllElectron.h"
+class EqEval : public Equation {
+ public:
+ EqEval(std::string name,Thing& thing) : Equation(name,thing) { }
+
+  virtual void evaluate() { myReportError("EqEval::evaluate()"); } 
+  SolveType getSolveType() { return EVAL; }
+};
 
 #endif

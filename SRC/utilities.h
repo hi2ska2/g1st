@@ -17,7 +17,8 @@
 
 void myReport(const std::string& message);
 void myReportError(const std::string& message);
-
+std::string myIntToString    (int    number);
+std::string myIntToString    (int    number,int digit);
 std::string myDoubleToString (double number);
 
 #endif

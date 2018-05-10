@@ -16,8 +16,8 @@ int yyparse();
 
 #include "Stopwatch.h"
 Stopwatch overallTime;
-//Stopwatch jacobianTime;
-//Stopwatch solveTime;
+Stopwatch jacobianTime;
+Stopwatch solveTime;
 
 int main(int argc, char* argv[])
 {

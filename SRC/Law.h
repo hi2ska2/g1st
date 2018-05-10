@@ -15,6 +15,8 @@
 #include <map>
 
 #include "Equation.h"
+#include "EqNewton.h"
+#include "EqEigen.h"
 
 class Law {
  public:
@@ -49,10 +51,10 @@ class Law {
   void setUnknownIndices();
   double update(bool& valid);
   
-  //RealTriplet _jacobian;
-  //std::vector<double> _residue;
-  //std::vector<double> _solution;
-  //std::map<Place,int> _unknownIndices;
+  RealTriplet _jacobian;
+  std::vector<double> _residue;
+  std::vector<double> _solution;
+  std::map<Place,int> _unknownIndices;
 };
 
 #endif

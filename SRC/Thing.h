@@ -12,7 +12,7 @@
 #define ThingH
 
 #include "ParseTree.h"
-//#include "Field.h"
+#include "Field.h"
 //#include "Id.h"
 
 #include "utilities.h"

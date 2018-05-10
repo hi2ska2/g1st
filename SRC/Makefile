@@ -2,15 +2,15 @@
 
 INC_DIR =
 
-ALL_LIBS =
+ALL_LIBS = -llapack
 
 rootFile = main.cc
 
 readFiles = parser_tab.cc lexyy.cc ParseTree.cc
 
-solverFiles = World.cc Thing.cc Atom.cc Crystal.cc Law.cc Solver.cc EqAllElectron.cc
+solverFiles = World.cc Thing.cc Atom.cc Crystal.cc Law.cc Solver.cc EqNewton.cc EqEigen.cc EqAllElectron.cc
 
-utilityFiles = utilities.cc Stopwatch.cc
+utilityFiles = utilities.cc numericalsolvers.cc Stopwatch.cc Sparse.cc
 
 inputFile = $(rootFile) $(solverFiles) $(utilityFiles) $(readFiles)
 
