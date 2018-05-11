@@ -126,7 +126,22 @@ void Stmt::action(ParseTree* caller) {
     Equation* selEq = NULL; 
     if (eqType.compare("allelectron")==0) {
       selEq = cLaw->addEquation( new EqAllElectron(selThing) );
+    }
+    else if (eqType.compare("electron")==0) {
+      // Empty implementation
+    }
+    else if (eqType.compare("hatree")==0) {
+      // Empty implementation
+    }
+    else if (eqType.compare("hydrogen")==0) {
+      selEq = cLaw->addEquation( new EqHydrogen(selThing) );
+    }
+    else if (eqType.compare("xc")==0) {
+      // Empty implementation
     }    
+    else {
+      myReportError("Equation type of " + eqType + " is not found.");
+    }
   }  
 
   ///////////

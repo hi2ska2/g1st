@@ -39,4 +39,6 @@ class EqEigen : public Equation {
   std::map<Place,int>* _unknownIndices;
 };
 
+#include "EqAllElectron.h"
+
 #endif

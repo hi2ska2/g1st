@@ -14,7 +14,7 @@
 #include "Thing.h"
 
 namespace AtomType {
-  enum Type { SILICON };
+  enum Type { ALUMINIUM, SILICON };
 };
 
 class Atom : public Thing {

@@ -49,12 +49,4 @@ class Equation {
   Thing& _thing;
 };
 
-class EqEval : public Equation {
- public:
- EqEval(std::string name,Thing& thing) : Equation(name,thing) { }
-
-  virtual void evaluate() { myReportError("EqEval::evaluate()"); } 
-  SolveType getSolveType() { return EVAL; }
-};
-
 #endif

@@ -21,7 +21,8 @@ void Atom::set(ArgList* argList)
 {
   if (argList->doesExist("type")) {
     std::string type = argList->lookup("type",std::string("si"));
-    if (type.compare("si")==0) _type = AtomType::SILICON;
+    if      (type.compare("al")==0) _type = AtomType::ALUMINIUM; // 13
+    else if (type.compare("si")==0) _type = AtomType::SILICON; // 14
     else myReportError("Atom::set(argList)");
   }
 }

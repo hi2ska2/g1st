@@ -11,13 +11,13 @@
 #ifndef EqAllElectronH
 #define EqAllElectronH
 
-#include "Equation.h"
+#include "EqEigen.h"
 
-class EqAllElectron : public Equation {
+class EqAllElectron : public EqEigen {
  public:
   EqAllElectron(Thing& thing);
-  
-  SolveType getSolveType() { return NEWTON; }
+
+  void apply();
 };
 
 #endif

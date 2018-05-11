@@ -8,11 +8,13 @@ rootFile = main.cc
 
 readFiles = parser_tab.cc lexyy.cc ParseTree.cc
 
-solverFiles = World.cc Thing.cc Atom.cc Crystal.cc Law.cc Solver.cc EqNewton.cc EqEigen.cc EqAllElectron.cc
+solverFiles = World.cc Thing.cc Atom.cc Crystal.cc Law.cc Solver.cc EqNewton.cc EqEigen.cc EqAllElectron.cc EqHydrogen.cc
+
+fieldFiles = Field.cc
 
 utilityFiles = utilities.cc numericalsolvers.cc Stopwatch.cc Sparse.cc
 
-inputFile = $(rootFile) $(solverFiles) $(utilityFiles) $(readFiles)
+inputFile = $(rootFile) $(solverFiles) $(fieldFiles) $(utilityFiles) $(readFiles)
 
 objectFile = $(inputFile:.cc=.o)
 dependFile = $(inputFile:.cc=.d)
@@ -31,6 +33,8 @@ all: $(objectFile)
 
 %.d: %.cc
 	g++ -M $(COMPILE_OPTION) $(INC_DIR) -c $< > $@
+
+-include $(dependFile)
 
 lexyy.cc: scanner.l
 	flex scanner.l

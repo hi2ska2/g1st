@@ -26,12 +26,14 @@ class Thing {
   Thing(const std::string& name,ThingType::Type type);
 
   std::string getName();
+  
+  virtual Field* getField() { return _field; } 
   //virtual bool isInitialized() = 0;
   
  protected:
   std::string _name;
   ThingType::Type _type;
-  //Field* _field;
+  Field* _field;
   //Id _thingId;
 };
 

@@ -36,9 +36,11 @@ class EqNewton : public Equation {
   virtual void setUnknownIndices(std::map<Place,int>& unknownIndices);
   virtual void showUnknownIndices();
   virtual void showUnknownIndices(std::map<Place,int>& unknownIndices);
+  /*
   virtual double update(std::vector<double>& solution,
 			std::map<Place,int>& unknownIndices,
 			bool& valid);
+  */
   virtual double update(std::vector<double>& solution,
 			std::map<Place,int>& unknownIndices,
 			double xref,
@@ -54,9 +56,6 @@ class EqNewton : public Equation {
 
  protected:
   Balance& getBalance(const int& row) {
-    //std::map<Place*,Balance>::iterator it;
-    //it = _balances.find(node);
-    //if (it == _balances.end()) it = _balances.insert(it,std::pair<Node*,Balance>(node,Balance()));
     std::pair< std::map<int,Balance>::iterator,bool > r;
     r = _balances.insert(std::pair<int,Balance>(row,Balance()));
     return (r.first)->second;
@@ -74,7 +73,5 @@ class EqNewton : public Equation {
 
   // It does not have any specific member variable.
 };
-
-#include "EqAllElectron.h"
 
 #endif

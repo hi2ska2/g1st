@@ -6,16 +6,17 @@
 // Please see LICENSE for license information //
 ////////////////////////////////////////////////
 
-// EqAllElectron.cc
+// Field.cc
 
-#include "EqAllElectron.h"
+#include "Field.h"
 
-EqAllElectron::EqAllElectron(Thing& thing)
-  : EqEigen("EqAllElectron","Wavefunction",thing)
+Variable& Field::getArrayVariable(const std::string& variableName,int n,int m,int l)
 {
+  VariableId dummy;
+  return getArrayVariable(variableName,dummy,n,m,l);
 }
 
-void EqAllElectron::apply()
+Variable& Field::getArrayVariable(const std::string& variableName,VariableId& variableId,int n,int m,int l)
 {
   // Empty implementation
 }

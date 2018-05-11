@@ -17,6 +17,7 @@
 #include "Equation.h"
 #include "EqNewton.h"
 #include "EqEigen.h"
+#include "EqEval.h"
 
 class Law {
  public:

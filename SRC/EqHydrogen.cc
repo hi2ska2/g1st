@@ -6,16 +6,12 @@
 // Please see LICENSE for license information //
 ////////////////////////////////////////////////
 
-// EqAllElectron.cc
+// EqHydrogen.cc
 
-#include "EqAllElectron.h"
+#include "EqHydrogen.h"
 
-EqAllElectron::EqAllElectron(Thing& thing)
-  : EqEigen("EqAllElectron","Wavefunction",thing)
-{
-}
-
-void EqAllElectron::apply()
+EqHydrogen::EqHydrogen(Thing& thing)
+  : EqEval("EqHydrogen",thing)
 {
   // Empty implementation
 }
