@@ -13,16 +13,23 @@
 #include "utilities.h"
 
 Atom::Atom(const std::string& name)
-  : Thing(name,ThingType::ATOM)
+  : Thing(name,ThingType::ATOM)   
 {
+  // Mesh
+  _mesh.clear();
 }
 
 void Atom::set(ArgList* argList)
 {
   if (argList->doesExist("type")) {
     std::string type = argList->lookup("type",std::string("si"));
-    if      (type.compare("al")==0) _type = AtomType::ALUMINIUM; // 13
-    else if (type.compare("si")==0) _type = AtomType::SILICON; // 14
+    if      (type.compare("al")==0) { _type = AtomType::ALUMINIUM; _nProton = 13; } // 13
+    else if (type.compare("si")==0) { _type = AtomType::SILICON;   _nProton = 14; } // 14
     else myReportError("Atom::set(argList)");
   }
+}
+
+int Atom::get_nProton()
+{
+  return _nProton;
 }

@@ -20,10 +20,17 @@ namespace AtomType {
 class Atom : public Thing {
  public:
   Atom(const std::string& name);
+
   virtual void set(ArgList* argList);
 
- private:
+  int get_nProton();
+
+ private:  
   AtomType::Type _type;
+  int _nProton;
+
+  // Mesh, which is a vector
+  std::vector<double> _mesh; // Actually, it is not a mesh object.
 };
 
 #endif

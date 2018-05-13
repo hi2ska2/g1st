@@ -14,7 +14,8 @@ EqNewton::EqNewton(std::string name,std::string variableName,Thing& thing,int nN
   : Equation(name,thing), 
     _variableName(variableName),
     _variable_old1Name(variableName+"_old1"),
-    _variable_old2Name(variableName+"_old2")
+    _variable_old2Name(variableName+"_old2"),
+    _field(*(_thing.getField()))
 { 
   myReport("EqNewton::EqNewton(name,variableName,thing,nNode)");
   std::cout << "name = " << name << "\n";
@@ -46,10 +47,12 @@ void EqNewton::collectUnknownIndices(std::map<Place,int>& unknownIndices)
 
 }
 
+/*
 void EqNewton::collectUnknownIndicesSemiconductor(std::map<Place,int>& unknownIndices)
 {
 
 }
+*/
 
 void EqNewton::compareUnknownIndices(const Place& place)
 {
@@ -108,6 +111,7 @@ double EqNewton::update(std::vector<double>& solution,
   // Empty implementation
 }
 
+/*
 double EqNewton::updateSemiconductor(std::vector<double>& solution,
 				     std::map<Place,int>& unknownIndices,
 				     double xref,
@@ -115,3 +119,4 @@ double EqNewton::updateSemiconductor(std::vector<double>& solution,
 {   
   // Empty implementation
 }
+*/

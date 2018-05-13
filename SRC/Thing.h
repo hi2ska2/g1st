@@ -25,6 +25,7 @@ class Thing {
  public:
   Thing(const std::string& name,ThingType::Type type);
 
+  bool checkType(ThingType::Type type);
   std::string getName();
   
   virtual Field* getField() { return _field; } 

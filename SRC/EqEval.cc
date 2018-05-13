@@ -6,21 +6,13 @@
 // Please see LICENSE for license information //
 ////////////////////////////////////////////////
 
-// EqHydrogen.h
-
-#ifndef EqHydrogenH
-#define EqHydrogenH
+// EqEval.cc
 
 #include "EqEval.h"
 
-class EqHydrogen : public EqEval {
- public:
-  EqHydrogen(Thing& thing);
-
-  virtual void evaluate();
-
- private:
-  Atom& _atom;
-};
-
-#endif
+EqEval::EqEval(std::string name,Thing& thing)
+  : Equation(name,thing),
+    _field(*(_thing.getField()))
+{
+  
+}

@@ -24,4 +24,9 @@ Thing::Thing(const std::string& name,
   //std::cout << "\n";
 }
 
+bool Thing::checkType(ThingType::Type type)
+{
+  return (_type==type);
+}
+
 std::string Thing::getName() { return _name; }

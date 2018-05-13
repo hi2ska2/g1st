@@ -8,7 +8,7 @@ rootFile = main.cc
 
 readFiles = parser_tab.cc lexyy.cc ParseTree.cc
 
-solverFiles = World.cc Thing.cc Atom.cc Crystal.cc Law.cc Solver.cc EqNewton.cc EqEigen.cc EqAllElectron.cc EqHydrogen.cc
+solverFiles = World.cc Thing.cc Atom.cc Crystal.cc Law.cc Solver.cc EqNewton.cc EqEval.cc EqEigen.cc EqAllElectron.cc EqHydrogen.cc
 
 fieldFiles = Field.cc
 

@@ -24,7 +24,7 @@ class EqNewton : public Equation {
   virtual void apply() { myReportError("EqNewton::apply(unknownIndices)"); }
   virtual void buildJacobianResidue(RealTriplet& jacobian,std::vector<double>& residue,const std::map<Place,int>& unknownIndices);
   virtual void collectUnknownIndices(std::map<Place,int>& unknownIndices);
-  void collectUnknownIndicesSemiconductor(std::map<Place,int>& unknownIndices);
+  //void collectUnknownIndicesSemiconductor(std::map<Place,int>& unknownIndices);
   virtual void compareUnknownIndices(const Place& place);
   virtual void copy_old();
   virtual int getRow(const Place& place);
@@ -49,10 +49,12 @@ class EqNewton : public Equation {
 			std::map<Place,int>& unknownIndices,
 			std::vector<double>& xref,
 			bool& valid);
+  /*
   virtual double updateSemiconductor(std::vector<double>& solution,
 				     std::map<Place,int>& unknownIndices,
 				     double xref,
 				     bool& valid);  
+  */
 
  protected:
   Balance& getBalance(const int& row) {
@@ -71,7 +73,8 @@ class EqNewton : public Equation {
 
   std::map<Place,int>* _unknownIndices;
 
-  // It does not have any specific member variable.
+  // It has a member variable.
+  Field& _field;
 };
 
 #endif

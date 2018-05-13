@@ -15,10 +15,14 @@
 
 class EqEval : public Equation {
  public:
- EqEval(std::string name,Thing& thing) : Equation(name,thing) { }
+  EqEval(std::string name,Thing& thing);
 
   virtual void evaluate() { myReportError("EqEval::evaluate()"); } 
   SolveType getSolveType() { return EVAL; }
+
+ protected:
+  // It has a member variable.
+  Field& _field; 
 };
 
 #include "EqHydrogen.h"
