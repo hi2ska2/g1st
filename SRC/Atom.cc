@@ -17,6 +17,8 @@ Atom::Atom(const std::string& name)
 {
   // Mesh
   _mesh.clear();
+
+  _field = new Field();
 }
 
 void Atom::set(ArgList* argList)

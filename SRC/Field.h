@@ -16,9 +16,9 @@
 #include "Place.h"
 #include <map>
 
-//typedef std::pair<VariableId,Variable*>                ArrayVariablePair;
-//typedef std::map<VariableId,Variable*>::iterator       ArrayVariableIter;
-//typedef std::map<VariableId,Variable*>::const_iterator ArrayVariableIterC;
+typedef std::pair<VariableId,Variable*>                 ArrayVariablePair;
+typedef std::map <VariableId,Variable*>::iterator       ArrayVariableIter;
+typedef std::map <VariableId,Variable*>::const_iterator ArrayVariableIterC;
 
 class Field {
  public:
@@ -59,11 +59,12 @@ class Field {
 
 };
 
-/*
+
 typedef std::pair<std::string,VariableId> VariableNamePair;
 typedef std::map<std::string,VariableId>::iterator       VariableNameIter;
 typedef std::map<std::string,VariableId>::const_iterator VariableNameIterC;
 
+/*
 typedef std::map<RegVar,Variable*>::iterator RegVarIter;
 typedef std::map<std::string,int>::iterator StrIntIter;
 */

@@ -31,8 +31,10 @@ void EqHydrogen::evaluate()
   Variable& hatree = _field.getArrayVariable("Hatree");
 
   // Electron
-  Variable& electron = _field.getArrayVariable("Electron");
+  Variable& electron = _field.getArrayVariable("Electron",_atom.get_nProton());
 
   for (int level=0; level<_atom.get_nProton(); ++level) {
+    std::cout << "level = " << level << "\n";
+    std::cout << electron[level] << "\n";
   }
 }
