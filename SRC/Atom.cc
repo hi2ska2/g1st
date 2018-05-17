@@ -17,6 +17,8 @@ Atom::Atom(const std::string& name)
 {
   // Mesh
   _mesh.clear();
+  _nMeshPoint = 100; // A trial number
+  // The distance must be assigned.
 
   _field = new Field();
 }
@@ -31,7 +33,6 @@ void Atom::set(ArgList* argList)
   }
 }
 
-int Atom::get_nProton()
-{
-  return _nProton;
-}
+int Atom::get_nMeshPoint() { return _nMeshPoint; }
+
+int Atom::get_nProton() { return _nProton; }

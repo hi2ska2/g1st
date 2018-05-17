@@ -23,11 +23,13 @@ class Atom : public Thing {
 
   virtual void set(ArgList* argList);
 
+  int get_nMeshPoint();
   int get_nProton();
 
  private:  
   AtomType::Type _type;
   int _nProton;
+  int _nMeshPoint;
 
   // Mesh, which is a vector
   std::vector<double> _mesh; // Actually, it is not a mesh object.
